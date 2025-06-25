@@ -28,6 +28,11 @@ function showPageData (){
     logoutButton.type = "button";
     logoutButton.id = "logoutBtn"
     logoutButton.innerText = "Logout";
+    logoutButton.addEventListener("click", () => {
+        sessionStorage.removeItem("loggedInUser");
+        window.location.href = "index.html";
+    });
+
     sideNav.appendChild(logoutButton);
     nav.appendChild(sideNav);
 
@@ -269,8 +274,8 @@ function addToDom(item, container, itemsArray) {
 }
 
 function renderUserView(){
-    const itemsWrapper = document.createElement("div");
-    itemsWrapper.classList.add("lower-div");
+    const lowerDiv = document.createElement("div");
+    lowerDiv.classList.add("lower-div");
 
     items.forEach(item => {
         const div = document.createElement("div");
@@ -286,7 +291,7 @@ function renderUserView(){
         `;
 
         div.appendChild(ul);
-        listWrapper.appendChild(div);
+        lowerDiv.appendChild(div);
     })
-    itemsBox.appendChild(itemsWrapper);
+    itemsBox.appendChild(lowerDiv);
 }
