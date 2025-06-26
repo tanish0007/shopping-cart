@@ -99,23 +99,32 @@ function renderAdminInterface(){
         const existingUpdNow = document.querySelector("#updNowBtn");
         if (existingUpdNow) existingUpdNow.remove();
 
-        if (!nameBox.value || !quanBox.value || !priceBox.value || !descBox.value) {
+        if (!nameBox.value.trim() || !quanBox.value || !priceBox.value || !descBox.value) {
             alert("Please fill in all fields.");
             return;
         }
 
-        const item = {
-            id: Date.now(),
-            name: nameBox.value,
-            quantity: quanBox.value,
-            price: priceBox.value,
-            description: descBox.value
-        };
+        const existingItem = items.find(item => item.name.toLowerCase() === nameBox.value.trim().toLowerCase());
 
-        items.push(item);
-        localStorage.setItem("items", JSON.stringify(items));
-        lowerDiv.innerHTML = "";
-        items.forEach(i => addToDom(i, lowerDiv, items));
+        if (existingItem) {
+            existingItem.quantity += quanBox.value;
+            localStorage.setItem("items", JSON.stringify(items));
+            lowerDiv.innerHTML = "";  
+            items.forEach(i => addToDom(i, lowerDiv, items));
+            alert(`Because item already exists so updated quantity of "${nameInput}" by ${quanInput}.`);
+        } else {
+            const newItem = {
+                id: Date.now(),
+                name: nameBox.value.trim(),
+                quantity: quanBox.value,
+                price: priceBox.value,
+                description: descBox.value.trim()
+            };
+            items.push(newItem);
+            localStorage.setItem("items", JSON.stringify(items));
+            lowerDiv.innerHTML = "";
+            items.forEach(i => addToDom(i, lowerDiv, items));
+        }
 
         nameBox.value = '';
         quanBox.value = '';
@@ -238,10 +247,15 @@ function addToDom(item, container, itemsArray) {
 
         updNow.addEventListener("click", () => {
             let changed = false;
-            const nameInput = document.querySelector("#nameBox").value;
+            const nameInput = document.querySelector("#nameBox").value.trim();
             const quanInput = document.querySelector("#quanBox").value;
             const priceInput = document.querySelector("#priceBox").value;
-            const descInput = document.querySelector("#descBox").value;
+            const descInput = document.querySelector("#descBox").value.trim();
+
+                if (nameInput === "") {
+            alert("Item name cannot be empty or just spaces. Please enter a valid name.");
+            return;
+        }
 
             itemsArray = itemsArray.map(elem => {
                 if (elem.id === item.id) {
