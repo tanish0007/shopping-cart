@@ -1,0 +1,238 @@
+/* Reset & base */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f7f9fc;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 2rem;
+}
+
+/* Container */
+.container {
+    background: white;
+    width: 100%;
+    max-width: 900px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    padding: 2rem;
+}
+
+/* Navigation bar */
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 1rem;
+}
+
+.nav h1 {
+    font-size: 1.8rem;
+    color: #333;
+}
+
+.nav > div {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.nav span {
+    background-color: #e74c3c;
+    color: white;
+    padding: 0.2rem 0.6rem;
+    border-radius: 15px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    user-select: none;
+}
+
+/* Logout button */
+#logoutBtn {
+    background-color: #3498db;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+#logoutBtn:disabled {
+    background-color: #95a5a6;
+    cursor: not-allowed;
+}
+
+#logoutBtn:hover:not(:disabled) {
+    background-color: #2980b9;
+}
+
+/* Page Data and Items Box */
+#page-Data {
+    width: 100%;
+}
+
+.items-box {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* Admin upper div with input fields */
+.upper-div {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.inputs {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    flex: 1 1 auto;
+}
+
+.inputs input {
+    padding: 0.5rem 0.8rem;
+    font-size: 1rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    min-width: 150px;
+    flex-grow: 1;
+    transition: border-color 0.3s ease;
+}
+
+.inputs input:focus {
+    outline: none;
+    border-color: #3498db;
+}
+
+/* Buttons box */
+.Buttons {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-shrink: 0;
+}
+
+.Buttons button {
+    background-color: #2ecc71;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.Buttons button#addBtn:hover:not(:disabled),
+.Buttons button#updNowBtn:hover {
+    background-color: #27ae60;
+}
+
+.Buttons button:disabled {
+    background-color: #95a5a6;
+    cursor: not-allowed;
+}
+
+/* Lower div - list of items */
+.lower-div {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* Each item card */
+.item {
+    background-color: #fafafa;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.item ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.item ul li {
+    font-weight: 500;
+    color: #444;
+    min-width: 120px;
+}
+
+.item .button-box {
+    display: flex;
+    gap: 0.8rem;
+    flex-shrink: 0;
+    margin-top: 0.5rem;
+}
+
+.item .button-box button {
+    background-color: #e74c3c;
+    border: none;
+    color: white;
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    min-width: 60px;
+}
+
+.item .button-box button:hover:not(:disabled) {
+    background-color: #c0392b;
+}
+
+.item .button-box button:disabled {
+    background-color: #95a5a6;
+    cursor: not-allowed;
+}
+
+.item .button-box button:last-child {
+    background-color: #3498db;
+}
+
+.item .button-box button:last-child:hover:not(:disabled) {
+    background-color: #2980b9;
+}
+
+/* Responsive for smaller screens */
+@media (max-width: 600px) {
+    .upper-div {
+        flex-direction: column;
+    }
+
+    .inputs input {
+        min-width: 100%;
+    }
+
+    .item ul {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .item .button-box {
+        margin-top: 1rem;
+        width: 100%;
+        justify-content: flex-start;
+    }
+}

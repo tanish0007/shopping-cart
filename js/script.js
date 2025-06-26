@@ -59,7 +59,7 @@ function showLoginForm() {
             console.log(existingUser);
             window.location.href = "dashboard.html";
         } else {
-            errorText.innerText = "User don't exist";
+            errorText.innerText = "Email or Passwprd is incorrect";
             errorText.style.color = "red";
         }
 

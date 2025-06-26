@@ -1,0 +1,105 @@
+/* Reset and base styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f4f6f8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Container for the whole form */
+.container {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+.container h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 1.5rem;
+}
+
+/* Tabs for Login and Sign Up */
+.tabLabel {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 1.5rem;
+}
+
+.tabLabel input[type="radio"] {
+    display: none;
+}
+
+.tabLabel label {
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    background-color: #e0e0e0;
+    border-radius: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.tabLabel input[type="radio"]:checked + label {
+    background-color: #3498db;
+    color: white;
+}
+
+/* Form content */
+form.tab {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+form.tab label {
+    color: #333;
+    font-weight: bold;
+    margin-top: 0.5rem;
+}
+
+form.tab input[type="text"],
+form.tab input[type="email"],
+form.tab input[type="password"] {
+    padding: 0.6rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+}
+
+form.tab input[type="checkbox"] {
+    margin-left: 10px;
+    transform: scale(1.2);
+}
+
+/* Buttons */
+form.tab button {
+    margin-top: 1rem;
+    padding: 0.7rem;
+    border: none;
+    background-color: #3498db;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+form.tab button:hover {
+    background-color: #2980b9;
+}
+
+/* Error and success messages */
+#errorText {
+    font-size: 0.9rem;
+    margin-top: -0.5rem;
+}
