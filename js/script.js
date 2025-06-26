@@ -13,22 +13,24 @@ function showLoginForm() {
 
     const mailLabel = document.createElement("label");
     mailLabel.setAttribute("for", "email");
-    mailLabel.innerText = "Email : ";
+    mailLabel.innerText = "Email*";
     tab.appendChild(mailLabel);
     const userEmail = document.createElement("input");
     userEmail.id = "email";
     userEmail.type = "email";
     userEmail.placeholder = "user123@gmail.com";
+    userEmail.required = true;
     mailLabel.appendChild(userEmail);
 
     const passLabel = document.createElement("label");
     passLabel.setAttribute("for", "password");
-    passLabel.innerText = "Password : ";
+    passLabel.innerText = "Password*";
     tab.appendChild(passLabel);
     const userPassword = document.createElement("input");
     userPassword.id = "password";
     userPassword.type = "password";
     userPassword.placeholder = "********";
+    userPassword.required = true;
     passLabel.appendChild(userPassword);
 
     const errorText = document.createElement("span");
@@ -59,7 +61,7 @@ function showLoginForm() {
             console.log(existingUser);
             window.location.href = "dashboard.html";
         } else {
-            errorText.innerText = "Email or Passwprd is incorrect";
+            errorText.innerHTML = "Email or Password is incorrect";
             errorText.style.color = "red";
         }
 
@@ -71,18 +73,18 @@ function showSignUpForm() {
 
     const nameLabel = document.createElement("label");
     nameLabel.setAttribute("for", "username");
-    nameLabel.innerText = "Name : ";
+    nameLabel.innerText = "Name*";
     tab.appendChild(nameLabel);
     const userName = document.createElement("input");
     userName.id = "username";
     userName.type = "text";
-    userName.placeholder = "Example";
+    userName.placeholder = "Dominic Toretto";
     userName.required = true;
     nameLabel.appendChild(userName);
 
     const mailLabel = document.createElement("label");
     mailLabel.setAttribute("for", "email");
-    mailLabel.innerText = "Email : ";
+    mailLabel.innerText = "Email*";
     tab.appendChild(mailLabel);
     const userEmail = document.createElement("input");
     userEmail.id = "email";
@@ -93,7 +95,7 @@ function showSignUpForm() {
 
     const passLabel = document.createElement("label");
     passLabel.setAttribute("for", "password");
-    passLabel.innerText = "Password : ";
+    passLabel.innerText = "Password*";
     tab.appendChild(passLabel);
     const userPassword = document.createElement("input");
     userPassword.id = "password";
@@ -109,7 +111,7 @@ function showSignUpForm() {
     const isAdmin = document.createElement("input");
     isAdmin.type = "checkbox";
     isAdmin.id = "chkAdmin";
-    tab.appendChild(isAdmin);
+    adminLabel.appendChild(isAdmin);
 
     const errorText = document.createElement("span");
     errorText.id = "errorText";
@@ -118,7 +120,7 @@ function showSignUpForm() {
     const signUpBtn = document.createElement("button");
     signUpBtn.id = "signUpBtn";
     signUpBtn.type = "button";
-    signUpBtn.innerText = "Signup";
+    signUpBtn.innerText = "Register";
     tab.appendChild(signUpBtn);
 
     signUpBtn.addEventListener("click", (event) => {
