@@ -42,17 +42,17 @@ function showPageData (){
 }
 
 function showItems () {
-    if (items.length === 0) {
-        itemsBox.innerText = "No items Present";
-        pageData.appendChild(itemsBox);
-        return;
-    }
+
+    itemsBox.innerHTML = "";
 
     if (loggedInUser.isAdmin) {
         renderAdminInterface();
-    }
-    else {
-        renderUserView();
+    } else {
+        if (items.length === 0) {
+            itemsBox.innerText = "No items Present";
+        } else {
+            renderUserView();
+        }
     }
 
     // render everything on page-Data
