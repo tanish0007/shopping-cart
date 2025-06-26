@@ -24,7 +24,7 @@ body {
     max-width: 500px;
 }
 .container:hover {
-    box-shadow: 0 0 20px white;
+    box-shadow: 0 0 30px white;
 }
 
 .container h1 {

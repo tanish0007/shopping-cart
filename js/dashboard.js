@@ -15,13 +15,15 @@ if(!loggedInUser) {
 
 function showPageData (){
     const heading = document.createElement("h1");
-    heading.innerText = `Welcome ${loggedInUser.name}`;
+    heading.innerHTML = `Welcome ${loggedInUser.name}`;
     nav.appendChild(heading);
 
     const sideNav = document.createElement("div");
     if(loggedInUser.isAdmin){
         const span = document.createElement('span');
-        span.innerHTML = "Admin";
+        span.innerHTML = '<i class="fa-solid fa-user-tie"></i>Admin';
+        span.id = "adminText";
+        span.setAttribute("title", "Admin User");
         sideNav.appendChild(span);
     }
     const logoutButton = document.createElement("button");
@@ -158,22 +160,22 @@ function addToDom(item, container, itemsArray) {
 
     const firstLI = document.createElement("li");
     firstLI.classList.add("itemName");
-    firstLI.innerText = `Name : ${item.name}`;
+    firstLI.innerHTML = `<strong>Name</strong> : ${item.name}`;
     ul.appendChild(firstLI);
 
     const secondLI = document.createElement("li");
     secondLI.classList.add("itemQuantity");
-    secondLI.innerText = `Quantity : ${item.quantity}`;
+    secondLI.innerHTML = `<strong>Quantity</strong> : ${item.quantity}`;
     ul.appendChild(secondLI);
 
     const thirdLI = document.createElement("li");
     thirdLI.classList.add("itemPrice");
-    thirdLI.innerText = `Price : ${item.price}`;
+    thirdLI.innerHTML = `<strong>Price</strong> : ${item.price}`;
     ul.appendChild(thirdLI);
 
     const fourthLI = document.createElement("li");
     fourthLI.classList.add("itemDesc");
-    fourthLI.innerText = `Description : ${item.description}`;
+    fourthLI.innerHTML = `<strong>Description</strong> : ${item.description}`;
     ul.appendChild(fourthLI);
 
     div.appendChild(ul);
@@ -305,6 +307,11 @@ function addToDom(item, container, itemsArray) {
             }
 
             updNow.remove();
+
+            document.querySelector("#nameBox").value = '';
+            document.querySelector("#quanBox").value = '';
+            document.querySelector("#priceBox").value = '';
+            document.querySelector("#descBox").value = '';
         });
     });
     btnBox.appendChild(updBtn);
