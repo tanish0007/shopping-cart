@@ -7,21 +7,20 @@
 }
 
 body {
-    background-color: #f4f6f8;
+    background-color: #000000;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
 }
 
-/* Container for the whole form */
 .container {
     background-color: #fff;
     padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     width: 100%;
-    max-width: 400px;
+    max-width: 500px;
 }
 
 .container h1 {
@@ -30,10 +29,9 @@ body {
     margin-bottom: 1.5rem;
 }
 
-/* Tabs for Login and Sign Up */
 .tabLabel {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     margin-bottom: 1.5rem;
 }
 
@@ -43,14 +41,15 @@ body {
 
 .tabLabel label {
     cursor: pointer;
-    padding: 0.5rem 1rem;
+    padding: 10px 20px;
     background-color: #e0e0e0;
     border-radius: 20px;
-    transition: background-color 0.3s ease;
+    transition:0.3s ease;
 }
 
 .tabLabel input[type="radio"]:checked + label {
-    background-color: #3498db;
+    background-color: #8a2be2;
+    box-shadow: 0 0 10px blueviolet;
     color: white;
 }
 
@@ -70,9 +69,10 @@ form.tab label {
 form.tab input[type="text"],
 form.tab input[type="email"],
 form.tab input[type="password"] {
-    padding: 0.6rem;
+    padding: 13px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    font-size: 20px;
     width: 100%;
 }
 
@@ -84,18 +84,19 @@ form.tab input[type="checkbox"] {
 /* Buttons */
 form.tab button {
     margin-top: 1rem;
-    padding: 0.7rem;
+    padding: 10px;
     border: none;
-    background-color: #3498db;
+    font-size: 20px;
+    background-color: #8a2be2;
     color: white;
     border-radius: 5px;
     cursor: pointer;
     font-weight: bold;
-    transition: background-color 0.3s ease;
+    transition: 0.3s ease;
 }
 
 form.tab button:hover {
-    background-color: #2980b9;
+    box-shadow: 0 0 20px #8a2be2;
 }
 
 /* Error and success messages */
