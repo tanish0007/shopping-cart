@@ -116,6 +116,11 @@ function renderAdminInterface(){
         localStorage.setItem("items", JSON.stringify(items));
         lowerDiv.innerHTML = "";
         items.forEach(i => addToDom(i, lowerDiv, items));
+
+        nameBox.value = '';
+        quanBox.value = '';
+        priceBox.value = '';
+        descBox.value = '';
     });
 
     buttonsBox.appendChild(addBtn);
@@ -168,6 +173,7 @@ function addToDom(item, container, itemsArray) {
     btnBox.classList.add("button-box");
 
     const delBtn = document.createElement("button");
+    delBtn.classList.add("deleteButton");
     delBtn.innerText = "Delete";
     delBtn.addEventListener("click", () => {
         const confirmDelete = confirm(`Are you sure you want to delete "${item.name}"?`);
@@ -176,6 +182,12 @@ function addToDom(item, container, itemsArray) {
         const updatedItems = itemsArray.filter(i => i.id !== item.id);
         localStorage.setItem("items", JSON.stringify(updatedItems));
         div.remove();
+
+        // clear all inputs
+        document.querySelector("#nameBox").value = '';
+        document.querySelector("#quanBox").value = '';
+        document.querySelector("#priceBox").value = '';
+        document.querySelector("#descBox").value = '';
     });
     btnBox.appendChild(delBtn);
 
@@ -204,10 +216,18 @@ function addToDom(item, container, itemsArray) {
 
         // Disable Logout button
         const logoutBtn = document.querySelector("#logoutBtn") 
-
         if (logoutBtn) {
             logoutBtn.disabled = true;
             logoutBtn.style.cursor = "not-allowed";
+        }
+
+        // disable other Delete buttons too..
+        const allDelBtns = document.querySelectorAll(".deleteButton");
+        if(allDelBtns){
+            allDelBtns.forEach(button => {
+                button.disabled = true;
+                button.style.cursor = "not-allowed";
+            })
         }
 
         // Creating Update Now Button
@@ -262,6 +282,12 @@ function addToDom(item, container, itemsArray) {
             if (logoutBtn) {
                 logoutBtn.disabled = false;
                 logoutBtn.style.cursor = "pointer";
+            }
+            if(allDelBtns){
+                allDelBtns.forEach(button => {
+                    button.disabled = false;
+                    button.style.cursor = "pointer";
+                })
             }
 
             updNow.remove();
