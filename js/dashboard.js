@@ -1,6 +1,10 @@
 const nav = document.querySelector(".nav");
 const pageData = document.querySelector("#page-Data");
 let items = JSON.parse(localStorage.getItem("items")) || [];
+if (!localStorage.getItem("items")) {
+    localStorage.setItem("items", JSON.stringify([]));
+    items = [];
+}
 const itemsBox = document.createElement("div");
 itemsBox.classList.add("items-box");
 
