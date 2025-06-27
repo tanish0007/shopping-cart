@@ -105,7 +105,7 @@ function renderAdminInterface(){
         const existingUpdNow = document.querySelector("#updNowBtn");
         if (existingUpdNow) existingUpdNow.remove();
 
-        if (!nameBox.value.trim() || !quanBox.value || !priceBox.value || !descBox.value) {
+        if (!nameBox.value.trim() || !quanBox.value || !priceBox.value || !descBox.value.trim()) {
             alert("Please fill in all fields.");
             return;
         }
@@ -113,7 +113,7 @@ function renderAdminInterface(){
         const existingItem = items.find(item => item.name.toLowerCase() === nameBox.value.trim().toLowerCase());
 
         if (existingItem) {
-            existingItem.quantity += quanBox.value;
+            existingItem.quantity += parseInt(quanBox.value);
             localStorage.setItem("items", JSON.stringify(items));
             lowerDiv.innerHTML = "";  
             items.forEach(i => addToDom(i, lowerDiv, items));
@@ -122,8 +122,8 @@ function renderAdminInterface(){
             const newItem = {
                 id: Date.now(),
                 name: nameBox.value.trim(),
-                quantity: quanBox.value,
-                price: priceBox.value,
+                quantity: parseInt(quanBox.value),
+                price: parseInt(priceBox.value),
                 description: descBox.value.trim()
             };
             items.push(newItem);
@@ -148,14 +148,14 @@ function renderAdminInterface(){
     lowerDiv.classList.add("lower-div");
 
     items.forEach(item => {
-        addToDom(item, lowerDiv, items);
+        addToDom(item, lowerDiv);
     })
 
     itemsBox.appendChild(upperDiv)
     itemsBox.appendChild(lowerDiv);
 }
 
-function addToDom(item, container, itemsArray) {
+function addToDom(item, container) {
     const div = document.createElement("div");
     div.setAttribute("id", item.id);
     div.classList.add("item");
@@ -194,8 +194,8 @@ function addToDom(item, container, itemsArray) {
         const confirmDelete = confirm(`Are you sure you want to delete "${item.name}"?`);
         if (!confirmDelete) return;
 
-        const updatedItems = itemsArray.filter(i => i.id !== item.id);
-        localStorage.setItem("items", JSON.stringify(updatedItems));
+        items = items.filter(i => i.id !== item.id);
+        localStorage.setItem("items", JSON.stringify(items));
         div.remove();
 
         // clear all inputs
@@ -254,8 +254,8 @@ function addToDom(item, container, itemsArray) {
         updNow.addEventListener("click", () => {
             let changed = false;
             const nameInput = document.querySelector("#nameBox").value.trim();
-            const quanInput = document.querySelector("#quanBox").value;
-            const priceInput = document.querySelector("#priceBox").value;
+            const quanInput = parseInt(document.querySelector("#quanBox").value);
+            const priceInput = parseInt(document.querySelector("#priceBox").value);
             const descInput = document.querySelector("#descBox").value.trim();
 
                 if (nameInput === "") {
@@ -263,7 +263,7 @@ function addToDom(item, container, itemsArray) {
             return;
         }
 
-            itemsArray = itemsArray.map(elem => {
+            items = items.map(elem => {
                 if (elem.id === item.id) {
                     if (elem.name !== nameInput && nameInput) {
                         elem.name = nameInput;
@@ -286,9 +286,9 @@ function addToDom(item, container, itemsArray) {
             });
 
             if (changed) {
-                localStorage.setItem("items", JSON.stringify(itemsArray));
+                localStorage.setItem("items", JSON.stringify(items));
                 container.innerHTML = "";
-                itemsArray.forEach(i => addToDom(i, container, itemsArray));
+                items.forEach(i => addToDom(i, container));
                 updNow.remove();
             } else {
                 alert("No changes were made");
