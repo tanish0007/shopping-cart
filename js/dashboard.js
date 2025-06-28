@@ -16,7 +16,6 @@ if(!loggedInUser) {
     showPageData();
 }
 
-
 function showPageData (){
     const heading = document.createElement("h1");
     heading.innerHTML = `Welcome ${loggedInUser.name}`;
