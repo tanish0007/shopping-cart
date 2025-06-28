@@ -334,10 +334,10 @@ function renderUserView(){
         const ul = document.createElement("ul");
 
         ul.innerHTML = `
-            <li>Name: ${item.name}</li>
-            <li>Quantity: ${item.quantity}</li>
-            <li>Price: ${item.price}</li>
-            <li>Description: ${item.description}</li>
+            <li><strong>Name:</strong> ${item.name}</li>
+            <li><strong>Quantity:</strong> ${item.quantity}</li>
+            <li><strong>Price:</strong> ${item.price}</li>
+            <li><strong>Description:</strong> ${item.description}</li>
         `;
 
         div.appendChild(ul);

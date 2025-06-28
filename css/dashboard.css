@@ -13,13 +13,13 @@ body {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    padding: 2rem;
+    padding: 2rem 5rem;
 }
 
 .container {
     background: white;
     width: 100%;
-    max-width: 900px;
+    /* max-width: 900px; */
     border-radius: 10px;
     padding: 2rem;
 }
@@ -157,9 +157,13 @@ body {
 }
 
 .lower-div {
-    display: flex;
+    /* display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1.5rem; */
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    gap: 1rem;
+    width: 100%;
 }
 
 .item {
@@ -171,7 +175,7 @@ body {
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    box-shadow: 2px 2px 6px rgb(187, 142, 230);
+    /* box-shadow: 2px 2px 6px rgb(187, 142, 230); */
 }
 
 .item ul {
@@ -249,5 +253,32 @@ body {
         margin-top: 1rem;
         width: 100%;
         justify-content: flex-start;
+    }
+}
+
+@media (max-width: 1600px){
+    .lower-div{
+        grid-template-columns: auto auto auto auto;
+    }
+}
+@media (max-width: 1200px){
+    .lower-div{
+        grid-template-columns: auto auto auto;
+    }
+}
+@media (max-width: 768px){
+    body{
+        padding: 1rem 1rem;
+    }
+    .lower-div{
+        grid-template-columns: auto auto;
+    }
+}
+@media (max-width: 500px){
+    body{
+        padding: 1rem 1rem;
+    }
+    .lower-div{
+        grid-template-columns: auto;
     }
 }
