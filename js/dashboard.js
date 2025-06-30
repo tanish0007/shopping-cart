@@ -59,7 +59,7 @@ function showItems () {
     }
 
     // render everything on page-Data
-    pageData.appendChild(itemsBox);
+    pageData.appendChild(itemsBox); 
 }
 
 function renderAdminInterface(){
@@ -324,15 +324,14 @@ function addToDom(item, container) {
 }
 
 function renderUserView(){
-    const lowerDiv = document.createElement("div");
-    lowerDiv.classList.add("lower-div");
+    const paginationDiv = document.createElement("div");
+    paginationDiv.classList.add("paginationDiv");
 
     items.forEach(item => {
-        const div = document.createElement("div");
-        div.classList.add("item");
+        const singleItem = document.createElement("div");
+        singleItem.classList.add("item");
 
         const ul = document.createElement("ul");
-
         ul.innerHTML = `
             <li><strong>Name:</strong> ${item.name}</li>
             <li><strong>Quantity:</strong> ${item.quantity}</li>
@@ -340,8 +339,22 @@ function renderUserView(){
             <li><strong>Description:</strong> ${item.description}</li>
         `;
 
-        div.appendChild(ul);
-        lowerDiv.appendChild(div);
+        const actionButtons = document.createElement("div");
+        actionButtons.classList.add("actionButtons");
+
+        const heartIcon = document.createElement("i");
+        heartIcon.classList.add("fa-solid");
+        heartIcon.classList.add("fa-heart");
+
+        const addToCartBtn = document.createElement("button");
+        addToCartBtn.innerHTML = "Add To Cart";
+
+        actionButtons.appendChild(heartIcon)
+        actionButtons.appendChild(addToCartBtn);
+        singleItem.appendChild(ul);
+        singleItem.appendChild(actionButtons);
+        paginationDiv.appendChild(singleItem);
     })
-    itemsBox.appendChild(lowerDiv);
+
+    itemsBox.appendChild(paginationDiv);
 }
